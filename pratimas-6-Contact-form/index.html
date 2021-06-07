@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg">
+      <div class="contact-box">
+        <h1> Contact us!</h1>
+        <form>
+            <label>Name:</label>
+              <input type="text" name="name" placeholder="Your name">
+            <label>Email:</label>
+              <input type="email" name="email" placeholder="Your email">
+            <label>Reference number:</label>
+              <input max="1000" min="1" id="age" type="number" placeholder="123456" required>
+              <textarea required rows="7" id="comment" placeholder="Your text goes here..." name="comment"></textarea>
+            <button>SEND!</button>
+          </form>
+      </div>
+  </body>
+</html>

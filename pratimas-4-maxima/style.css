@@ -1,0 +1,56 @@
+body {
+  background-color: #9bb1db;
+}
+
+header {
+    text-align: center;
+}
+
+.conteiner {
+  max-width: 1000px;
+  width: 75%;
+  background-color: antiquewhite;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 1px solid black;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 10px #0a060656;
+}
+
+header img {
+    height: 6rem;
+}
+
+header a {
+    color: #000;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+.conteiner--main-photo {
+    width: 100%;
+    height: auto;
+}
+
+main p {
+    text-align: justify;
+}
+
+h4 {
+    padding: 0;
+    margin: 0;
+}
+
+.center {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.conteiner--product-photo {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+}
+
