@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-refrrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+      <header>
+          <h1>Calculator</h1>
+      </header>
+      <div id="result"></div>
+      <main>
+        <div class="input">
+          <input id="nr1" type="number" name="number1" placeholder="Pirmasis Jūsų skaičius" />
+          <input id="nr2" type="number" name="number2" placeholder="Antrasis Jūsų skaičius" />
+        </div>
+        <div id="operators">
+          <button id="btn-sum" class="sum"> Sudėtis</button>
+          <button id="btn-sub" class="sub"> Atimtis</button>
+          <button id="btn-mul" class="mul"> Daugyba</button>
+          <button id="btn-div" class="div"> Dalyba</button>
+          <button id="btn-mod" class="mod"> Modulus</button>
+          <button id="btn-clear" class="clear">IŠVALYTI</button>
+        </div>
+      </main>
+      <footer>
+          Copyrights@Raimundas Markūnas
+      </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
