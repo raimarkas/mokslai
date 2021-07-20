@@ -7,20 +7,23 @@ const buttons = document.querySelectorAll('#operators')
 buttons.forEach(button => {
     button.addEventListener('click', event => {
         console.log( event.target.id );
+        resultData.appendChild(Calculation).value
    });
 });
 
 function Calculation(){
-    if (buttons.target === 'btn-sum'){
+    if (buttons.target.id === 'btn-sum'){
         calculate = val1 + val2
-    } else if (buttons === 'btn-sub'){
+    } else if (buttons.target.id === 'btn-sub'){
         calculate = val1 - val2
-    } else if (buttons === 'btn-mul'){
+    } else if (buttons.target.id === 'btn-mul'){
         calculate = val1 * val2
-    } else if (buttons === 'btn-div'){
+    } else if (buttons.target.id === 'btn-div'){
         calculate = val1 / val2
-    } else if (buttons === 'btn-mod'){
+    } else if (buttons.target.id === 'btn-mod'){
         calculate = val1 % val2
-    } else (buttons === 'btn-clear');{
-        document.getElementById('result').value = ''
+    } else (buttons.target.id === 'btn-clear');{
+        document.getElementById('nr1, nr2').value = ''
 }}
+
+resultData.appendChild(calculate).value
