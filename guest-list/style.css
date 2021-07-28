@@ -1,0 +1,28 @@
+input {
+    padding: 1rem;
+    text-align: center;
+}
+
+button {
+    padding: 1rem;
+    margin: 5px;
+}
+
+main {
+    display: flex;
+    columns: 2;
+    flex-direction: column;
+}
+
+#buttons {
+    display: flexbox;
+    width: 30%;
+    margin: 1rem;
+    padding-right: 10%;
+}
+
+p {
+    display: block;
+    width: 30%;
+    margin: 1rem;
+}
