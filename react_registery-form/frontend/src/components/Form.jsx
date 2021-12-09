@@ -1,18 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
-// import useFetch from '../hooks/useFetch.js';
+import axios from 'axios'
 
 const Form = () => {
   // -- state
 //   const [loading, error] = useFetch('register');
   const [username, setUsername] = useState('');
+  const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [age, setAge] = useState('');
 
   const [validationMessage, setValidationMessage] = useState('');
 
+  const visitor = {username, surname, email, age}
+  
+  const register = () => {
+      const {username, surname, email, age} = visitor
+      if (username && surname && email && age) {
+        setValidationMessage('Thank you for your registration')
+        axios.post('http://localhost:5000/api/visitors', visitor)
+        .then (res => console.log(res))
+      } else {
+        setValidationMessage('Put all information')
+      }
+      
+  }
+
   // -- ref
   let usernameInputRef = useRef(null);
-  let passwordInputRef = useRef(null);
+  let ageInputRef = useRef(null);
 
   // -- side effect
   useEffect(() => {
@@ -22,17 +37,18 @@ const Form = () => {
   // Functions
   const submitHandler = (e) => {
     e.preventDefault();
+    // console.log(username, surname, email, age);
 
-    console.log(username, email, password);
-    // -- password lenght validation
-    if (password.length < 8) {
-      setPassword('');
-      passwordInputRef.current.focus();
-      setValidationMessage('Password must be 8 or more characters lenght');
+    // -- age validation
+    if (age > '2016-01-01') {
+      setAge('');
+      ageInputRef.current.focus();
+      setValidationMessage('Sorry you can not register to event, because you are under 5');
     }
 
     // ----- SENDING DATA TO API and more.....
   };
+
 
   return (
 //    loading ? (
@@ -43,13 +59,22 @@ const Form = () => {
     <>
       <form onSubmit={submitHandler}>
         <div>
-          <label htmlFor='name'>User name</label>
+          <label htmlFor='name'>Your name</label>
           <br />
           <input
             type='text'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             ref={usernameInputRef}
+          />
+        </div>
+        <div>
+          <label htmlFor='name'>Your surname</label>
+          <br />
+          <input
+            type='text'
+            value={surname}
+            onChange={(e) => setSurname(e.target.value)}
           />
         </div>
         <div>
@@ -65,14 +90,14 @@ const Form = () => {
           <label htmlFor='password'>Pasword</label>
           <br />
           <input
-            type='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            ref={passwordInputRef}
+            type='date'
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            ref={ageInputRef}
           />
         </div>
         <div>
-          <input type='submit' value='Register' />
+          <input type='submit' value='Register' onClick={register}/>
         </div>
       </form>
       {validationMessage && <p>{validationMessage}</p>}

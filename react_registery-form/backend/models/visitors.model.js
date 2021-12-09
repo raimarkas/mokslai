@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const visitorShema = mongoose.Schema({
-  name: {
+  username: {
     type: String,
     required: true,
   },
@@ -14,10 +14,10 @@ const visitorShema = mongoose.Schema({
     required: true,
   },
   age: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
 
-const Visitor = mongoose.model('visitor', visitorShema);
+const Visitor = mongoose.model('visitors', visitorShema);
 module.exports = Visitor;
