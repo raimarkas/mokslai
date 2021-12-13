@@ -9,7 +9,7 @@ const Visitors = () => {
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
   const [visitors, setVisitor] = useState([]);
-  const [selectedVisitorId, setSelectedVisitorId] = useState('')
+  const [selectedVisitorId, setSelectedVisitorId] = useState('');
 
   useEffect(() => {
     getVisitors();
@@ -18,10 +18,10 @@ const Visitors = () => {
   function getVisitors() {
     axios.get('http://localhost:5000/api/visitors').then((res) => {
       setVisitor(res.data);
-    //   setUsername(res.data[0].username);
-    //   setSurname(res.data[0].surname);
-    //   setEmail(res.data[0].email);
-    //   setAge(res.data[0].age);
+      //   setUsername(res.data[0].username);
+      //   setSurname(res.data[0].surname);
+      //   setEmail(res.data[0].email);
+      //   setAge(res.data[0].age);
     });
   }
 
@@ -32,7 +32,7 @@ const Visitors = () => {
     setSurname(user.surname);
     setEmail(user.email);
     setAge(user.age);
-    setSelectedVisitorId(id)
+    setSelectedVisitorId(id);
   }
 
   function deleteVisitor(id) {
@@ -43,21 +43,21 @@ const Visitors = () => {
         return b.id !== id;
       });
       setVisitor(a);
-      //   console.log('kty', a);
     });
   }
 
   function updateVisitor() {
-    axios.put(`http://localhost:5000/api/visitors/${selectedVisitorId}`, {
+    axios
+      .put(`http://localhost:5000/api/visitors/${selectedVisitorId}`, {
         username: username,
         surname: surname,
         email: email,
         age: age,
-      }).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      getVisitors();
-    });
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
   }
 
   const submitHandler = (e) => {
