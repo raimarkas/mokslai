@@ -1,22 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import useFetch from '../hooks/useFetch';
 import axios from 'axios';
 
 const Visitors = () => {
   const [loading, data, error] = useFetch('visitors');
-//   console.log('kas cia', data);
+  const [username, setUsername] = useState('');
+  const [surname, setSurname] = useState('');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState('');
+  const [visitors, setVisitor] = useState([]);
+  const [selectedVisitorId, setSelectedVisitorId] = useState('')
 
-function deleteVisitor(id) {
-    axios.delete(`http://localhost:5000/api/visitors/${id}`)
-    .then(res => {  
-        console.log(res);  
-        console.log(res.data);  
-    
-        // const data = data.filter(item => item.id !== id);  
-        // this.setState({ data });  
-      })  
-    
-  }  
+  useEffect(() => {
+    getVisitors();
+  }, []);
+
+  function getVisitors() {
+    axios.get('http://localhost:5000/api/visitors').then((res) => {
+      setVisitor(res.data);
+    //   setUsername(res.data[0].username);
+    //   setSurname(res.data[0].surname);
+    //   setEmail(res.data[0].email);
+    //   setAge(res.data[0].age);
+    });
+  }
+
+  function selectVisitor(id) {
+    let user = visitors.find((user) => user._id === id);
+    // console.log(user);
+    setUsername(user.username);
+    setSurname(user.surname);
+    setEmail(user.email);
+    setAge(user.age);
+    setSelectedVisitorId(id)
+  }
+
+  function deleteVisitor(id) {
+    axios.delete(`http://localhost:5000/api/visitors/${id}`).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      const a = data.filter((b) => {
+        return b.id !== id;
+      });
+      setVisitor(a);
+      //   console.log('kty', a);
+    });
+  }
+
+  function updateVisitor() {
+    axios.put(`http://localhost:5000/api/visitors/${selectedVisitorId}`, {
+        username: username,
+        surname: surname,
+        email: email,
+        age: age,
+      }).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      getVisitors();
+    });
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
+
+  //---------------
+
+  //----------
 
   return loading ? (
     <p>Loading...</p>
@@ -25,6 +75,39 @@ function deleteVisitor(id) {
   ) : (
     <div>
       <h2>Information about the visitors</h2>
+      <h3>Update visitor information</h3>
+      <form onSubmit={submitHandler}>
+        <input
+          type='text'
+          value={username}
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        />
+        <input
+          type='text'
+          value={surname}
+          onChange={(e) => {
+            setSurname(e.target.value);
+          }}
+        />
+        <input
+          type='text'
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+        <input
+          type='text'
+          value={age}
+          onChange={(e) => {
+            setAge(e.target.value);
+          }}
+        />
+        <button onClick={updateVisitor}>Update visitor</button>
+      </form>
+
       <table>
         <tbody>
           <tr style={{ backgroundColor: 'grey', padding: '20px' }}>
@@ -49,9 +132,9 @@ function deleteVisitor(id) {
               <td style={{ padding: '15px 0px 15px 15px', textAlign: 'left' }}>
                 {item.age}
               </td>
-              {/* <td style={{ padding: '15px 0px 15px 50px' }}>
-                <button>Edit</button>
-              </td> */}
+              <td style={{ padding: '15px 0px 15px 50px' }}>
+                <button onClick={() => selectVisitor(item._id)}>Edit</button>
+              </td>
               <td style={{ padding: '15px 0px 15px 50px' }}>
                 <button onClick={() => deleteVisitor(item._id)}>Delete</button>
               </td>

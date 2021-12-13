@@ -3,7 +3,6 @@ import axios from 'axios'
 
 const Form = () => {
   // -- state
-//   const [loading, error] = useFetch('register');
   const [username, setUsername] = useState('');
   const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('');
