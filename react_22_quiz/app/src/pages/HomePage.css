@@ -1,0 +1,19 @@
+.main-btn {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Shippori Antique', sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    padding: 20px;
+    margin: 10px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #c77529cb;
+    background-color: rgba(242, 255, 0, 0.419);
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: rgb(5, 3, 3);
+  }
+  
+  .main-btn:hover {
+    background-color: rgba(95, 119, 163, 0.474);
+  }

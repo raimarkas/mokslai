@@ -1,0 +1,81 @@
+.about-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.about-page__h1 {
+  width: 100%;
+  text-align: center;
+  color: #c7af29b8;
+  background-color: rgba(242, 255, 0, 0.056);
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(5, 3, 3);
+}
+
+.about-page--div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.about-page--div img {
+  display: flex;
+  flex-wrap: wrap;
+  width: 20%;
+  height: auto;
+}
+
+.about-page--div__img {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  width: 45%;
+  height: auto;
+  padding: 1%;
+}
+
+.about-page--div__text {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  width: 45%;
+  padding: 5%;
+  font-family: 'Shippori Antique', sans-serif;
+  font-weight: 400;
+  background-color: rgba(242, 255, 0, 0.336);
+}
+
+/* mobile */
+/* @media screen and (max-width: 480px) {
+
+  }
+} */
+
+/* tablet  */
+@media screen and (max-width: 768px) {
+  .about-page--div {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    height: auto;
+  }
+
+  .about-page--div img {
+    width: 80%;
+    height: auto;
+    padding: 1%;
+  }
+
+  .about-page--div__text {
+    width: 70%;
+    height: auto;
+    padding: 5%;
+    margin: 0 10%;
+  }
+}
+
+/* desktop*/
+/* @media screen and (min-width: 1200px) {
+  .about-page {
+    width: 100%;
+  }
+} */
